@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  touch-action: none;
+}
+
+canvas {
+  display: block;
+}
+
+/* 💌 mensagem */
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  color: #ff4d6d;
+  text-align: center;
+  z-index: 999;
+
+  opacity: 0;
+  transition: opacity 2s ease;
+
+  animation: pulse 2s infinite;
+}
+
+.message.show {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* 📸 polaroids */
+.polaroids {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.polaroid {
+  position: absolute;
+  width: 130px;
+  background: #fff;
+  padding: 10px 10px 30px 10px;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+
+  opacity: 0;
+  transform: translateY(-200px) scale(0.6);
+  transition: transform 1.2s ease, opacity 1s ease;
+}
+
+.polaroid img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+.polaroid.show {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(var(--rotate));
+}
+
+.polaroid.focus {
+  z-index: 20;
+  transform: scale(1.8) rotate(0deg) !important;
+}
+
+/* 📱 mobile */
+@media (max-width: 768px) {
+
+  .message {
+    top: 20%;
+    transform: translateX(-50%);
+  }
+
+  .polaroids {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .polaroid {
+    width: 70vw;
+    max-width: 260px;
+
+    left: 50% !important;
+    top: 55% !important;
+
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+
+  .polaroid.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 10;
+  }
+
+  .polaroid.exit {
+    transform: translate(-50%, -80%) scale(0.9);
+    opacity: 0;
+  }
+}
