@@ -80,9 +80,16 @@ function showNextPhoto() {
 function startMobileExperience() {
   showNextPhoto();
 
-  setTimeout(() => {
-    window.addEventListener("touchstart", showNextPhoto);
-  }, 300);
+  let tapped = false;
+
+  window.addEventListener("touchstart", () => {
+    if (tapped) return;
+    tapped = true;
+
+    showNextPhoto();
+
+    setTimeout(() => tapped = false, 300);
+  });
 }
 
 // ================= DESKTOP =================
