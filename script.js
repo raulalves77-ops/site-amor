@@ -42,8 +42,8 @@ const polaroidContainer = document.getElementById("polaroids");
 let polaroidsShown = false;
 
 const images = [
-  "Imagens/1.jpeg","Imagens/2.jpeg","Imagens/3.jpeg","Imagens/4.jpeg",
-  "Imagens/5.jpeg","Imagens/6.jpeg","Imagens/7.jpeg","Imagens/8.jpeg"
+  "files/1.jpeg","files/2.jpeg","files/3.jpeg","files/4.jpeg",
+  "files/5.jpeg","files/6.jpeg","files/7.jpeg","files/8.jpeg"
 ];
 
 // ================= MOBILE =================
